@@ -250,12 +250,21 @@
         <h2 class="heading">Certificates</h2>
     
         <div class="certificate-container">
+
+            <div class="certificate-card">
+                <h3>HTML Certificate</h3>
+                <p>Learn HTML</p>
+    
+                <a href="images/Learn HTML.pdf" target="_blank">
+                    View Certificate
+                </a>
+            </div>
     
             <div class="certificate-card">
                 <h3>Python Certificate</h3>
                 <p>Python Programming</p>
     
-                <a href="images/Python.pdf" target="_blank">stat
+                <a href="images/Python.pdf" target="_blank">
                     View Certificate
                 </a>
             </div>
@@ -284,35 +293,53 @@
 
     <!-- Contact -->
 
-    <section id="contact">
+    
+<section id="contact">
+    <h2 class="heading">Contact Me</h2>
 
-        <h2 class="heading">Contact Me</h2>
+    <form>
+        <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+        >
 
-        <form>
+        <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+        >
 
-            <input type="text"
-                placeholder="Your Name"
-                required>
+        <input
+            type="text"
+            name="subject"
+            placeholder="Subject"
+        >
 
-            <input type="email"
-                placeholder="Email"
-                required>
+        <textarea
+            name="message"
+            rows="6"
+            placeholder="Message"
+            required
+        ></textarea>
 
-            <input type="text"
-                placeholder="Subject">
+        <button type="submit" class="btn">
+            Send Message
+        </button>
+    </form>
+</section>
 
-            <textarea
-                rows="6"
-                placeholder="Message"></textarea>
-
-            <button type="submit" class="btn">
-                Send Message
-            </button>
-
-        </form>
-
-    </section>
-
+<!-- Success Popup -->
+<div class="popup-overlay" id="successPopup">
+    <div class="popup-box">
+        <div class="success-icon">✓</div>
+        <h2>Message Sent!</h2>
+        <p>Thank you for reaching out. I'll get back to you soon!</p>
+        <button type="button" id="closePopup">Awesome!</button>
+    </div>
+</div>
     <!-- Footer -->
 
     <footer>

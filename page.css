@@ -1769,7 +1769,84 @@ animation:spin 1s linear infinite;
 100%{
 
 transform:rotate(360deg);
-
+}
 }
 
+/* Success Popup */
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s ease;
 }
+
+.popup-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.popup-box {
+    width: 90%;
+    max-width: 380px;
+    padding: 35px 25px;
+    background: #fff;
+    border-radius: 22px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+    transform: scale(0.8);
+    transition: 0.3s ease;
+}
+
+.popup-overlay.show .popup-box {
+    transform: scale(1);
+}
+
+.success-icon {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e4f9ec;
+    color: #20a45a;
+    border-radius: 50%;
+    font-size: 42px;
+    font-weight: bold;
+}
+
+.popup-box h2 {
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.popup-box p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.popup-box button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    background: #20a45a;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.popup-box button:hover {
+    background: #168346;
+    transform: translateY(-2px);
+}
+

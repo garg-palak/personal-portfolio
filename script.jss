@@ -1,3 +1,4 @@
+console.log("JavaScript file loaded!");
 // ===============================
 // Portfolio JavaScript
 // ===============================
@@ -199,17 +200,49 @@ reveal();
 // Contact Form
 // ===============================
 
+
 const form = document.querySelector("form");
+console.log("Form found:", form);
+ console.log("Submit listener attached!");
 
-form.addEventListener("submit",(e)=>{
 
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    console.log("Form submitted!");
 
-    alert("Thank you! Your message has been sent.");
+    const formData = new FormData(form);
 
-    form.reset();
+    const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        subject: formData.get("subject"),
+        message: formData.get("message")
+    };
 
+    try {
+        console.log("Sending data to API:", data);
+        const response = await fetch("http://localhost:5000/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+            document.getElementById("successPopup").classList.add("show");
+            form.reset();
+        } else {
+            alert(result.message || "Failed to send message.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Server se connection nahi ho paaya. Please try again.");
+    }
 });
+
 
 // ===============================
 // Smooth Scroll
@@ -229,6 +262,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
     });
 
+});
+const successPopup = document.getElementById("successPopup");
+const closePopup = document.getElementById("closePopup");
+console.log("Popup element:", successPopup);
+console.log("Close button:", closePopup);
+
+closePopup.addEventListener("click", () => {
+    successPopup.classList.remove("show");
+});
+
+successPopup.addEventListener("click", (e) => {
+    if (e.target === successPopup) {
+        successPopup.classList.remove("show");
+    }
 });
 
 // ===============================
